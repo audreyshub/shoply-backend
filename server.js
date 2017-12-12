@@ -26,7 +26,11 @@ app.use(morgan('common')); //use morgan to log
 app.use(bodyParser.json()); //Parse everything as json format
 
 //Where to serve static content
-app.use( express.static( path.join( application_root, 'site') ) );
+app.use( express.static('public') );
+
+app.get("/", (request, response) => {
+  response.sendFile(__dirname + '/public/index.html');
+});
 
 
 //Database config
