@@ -25,6 +25,10 @@ const db = mongoose.connection;
 app.use(morgan('common')); //use morgan to log
 app.use(bodyParser.json()); //Parse everything as json format
 
+//Where to serve static content
+app.use( express.static( path.join( application_root, 'site') ) );
+
+
 //Database config
 mongoose.connect(config.databaseUrl, {useMongoClient: true});
 db.on('error', console.error.bind(console, 'Connection error:'));
