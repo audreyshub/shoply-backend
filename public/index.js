@@ -51,7 +51,7 @@ let createRecipeHtml = function (element) {
 };
 
 $(document).ready(() => {
-    $.get('http://localhost:3232/item/all', (result, error) => {
+    $.get('/item/all', (result, error) => {
         if (error) {
             console.log(error);
         }
@@ -80,7 +80,7 @@ $(document).ready(() => {
         };
 
         $.ajax({
-            url: 'http://localhost:3232/item/create',
+            url: '/item/create',
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',
@@ -99,7 +99,7 @@ $(document).ready(() => {
 
     $('body').delegate('.delete', 'click', (event) => {
         $.ajax({
-            url: 'http://localhost:3232/item/remove/' + event.target.attributes.value.nodeValue,
+            url: '/item/remove/' + event.target.attributes.value.nodeValue,
             dataType: 'json',
             type: 'delete',
             contentType: 'application/json',
@@ -116,7 +116,7 @@ $(document).ready(() => {
         if ($(event.target).parent().css("text-decoration") == "line-through solid rgb(128, 128, 128)") {
             //to make uncheck
             $.ajax({
-                url: 'http://localhost:3232/item/uncheck/' + event.target.attributes.value.nodeValue,
+                url: '/item/uncheck/' + event.target.attributes.value.nodeValue,
                 dataType: 'json',
                 type: 'patch',
                 contentType: 'application/json',
@@ -132,7 +132,7 @@ $(document).ready(() => {
             });
         } else {
             $.ajax({
-                url: 'http://localhost:3232/item/check/' + event.target.attributes.value.nodeValue,
+                url: '/item/check/' + event.target.attributes.value.nodeValue,
                 dataType: 'json',
                 type: 'patch',
                 contentType: 'application/json',
